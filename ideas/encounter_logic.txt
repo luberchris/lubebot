@@ -1,0 +1,9 @@
+!fight CR
+	\----> returns a monster
+		\----> hold as active and who it's fighting: hold monster and user in DB
+			\----> on !attack, roll hit dice against AC
+				/----> apply damage against HP against each other <----
+				/----> on playerDeath, saving throws (3 failures, reset user)
+				/----> on monsterDeath, award xp (lvl = log(xp))
+			\----> on !disengage, no xp, remove encounter from DB
+			\----> if no encounter, warn
