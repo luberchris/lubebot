@@ -35,6 +35,34 @@ for (let i = 0; i < classes.length; i++) {
 
 //////////////////Chat Actions////////////////////
 
+//Ads
+//Twitter notification every 30 minutes
+// setInterval(() => {
+//   client.say(
+//     "Lubesy", //change this with other channels
+//     "Follow me on Twitter! https://twitter.com/lubesy_official"
+//   ),
+//     1800000;
+// });
+
+//Team site notification every 41 minutes
+// setInterval(() => {
+//   client.say(
+//     helpers.removeHash(channel),
+//     "Check out my friends! https://lubechatbot.herokuapp.com/"
+//   ),
+//     2460000;
+// });
+
+//Art notification every 63 minutes
+// setInterval(() => {
+//   client.say(
+//     helpers.removeHash(channel),
+//     "Check out my friends! https://lubechatbot.herokuapp.com/"
+//   ),
+//     2460000;
+// });
+
 //Action
 //Anongiftpaidupgrade
 
@@ -42,8 +70,7 @@ for (let i = 0; i < classes.length; i++) {
 client.on("ban", (channel, username, reason) => {
   client.say(
     helpers.removeHash(channel),
-    "LUL LUL LUL " +
-      helpers.removeHash(username) +
+    helpers.removeHash(username) +
       " was banned from " +
       helpers.removeHash(channel) +
       "'s chat for " +
@@ -59,13 +86,8 @@ client.on("ban", (channel, username, reason) => {
 
 //Cheer
 client.on("cheer", (channel, userstate, message) => {
-  for (let i = 0; i < 5; i++) {
-    client.say(
-      helpers.removeHash(channel),
-      userstate.username + ": " + message
-    );
-    client.say(helpers.removeHash(channel), "Thank you for the bits!!");
-  }
+  client.say(helpers.removeHash(channel), userstate.username + ": " + message);
+  client.say(helpers.removeHash(channel), "Thank you for the bits!!");
 });
 
 //Clearchat
@@ -149,11 +171,7 @@ client.on("message", (channel, userstate, message, self) => {
         case 1:
           switch (message) {
             case "!test":
-              // console.log(
-              //   classes.find(
-              //     char => (char.name = message.substr(message.indexOf(" ") + 1))
-              //   )
-              // );
+              console.log(userstate);
               break;
 
             case "!attack":
@@ -206,8 +224,13 @@ client.on("message", (channel, userstate, message, self) => {
                   userstate["display-name"] +
                   " is " +
                   helpers.getRandomInt(100) +
-                  "% gay GayPride"
+                  "% likely to be gay today GayPride"
               );
+              break;
+
+            case "!lube":
+              queries.putCount("lubes");
+              queries.putUser("lubes", userstate.username);
               break;
 
             case "?lubes":
@@ -232,7 +255,10 @@ client.on("message", (channel, userstate, message, self) => {
 
             case "?mods":
               client.mods(helpers.removeHash(channel)).then(mods => {
-                client.say(helpers.removeHash(channel), "Mods: " + mods);
+                client.say(
+                  helpers.removeHash(channel),
+                  "Mods: " + mods.join(", ")
+                );
               });
               break;
 
@@ -407,15 +433,13 @@ client.on("message", (channel, userstate, message, self) => {
 
 //Raided
 client.on("raided", (channel, username, viewers) => {
-  for (let i = 0; i < 10; i++) {
-    client.say(
-      helpers.removeHash(channel),
+  client.say(
+    helpers.removeHash(channel),
+    viewers +
+      " NotLikeThis HeyGuys Oh golly gee here they come " +
       viewers +
-        " NotLikeThis HeyGuys Oh golly here they come " +
-        viewers +
-        " VoteYea VoteYea VoteYea VoteYea"
-    );
-  }
+      " VoteYea VoteYea VoteYea VoteYea"
+  );
   client.say(
     helpers.removeHash(channel),
     `My butt is ready GayPride GayPride GayPride GayPride GayPride GayPride GayPride GayPride\n
