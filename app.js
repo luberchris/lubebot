@@ -111,17 +111,8 @@ client.on("hosted", (channel, username, viewers, autohost) => {
       helpers.removeHash(username) +
         " is hosting us for " +
         viewers +
-        " people!"
+        " people! lubesyPog GRAB THE LUBE BOYS"
     );
-    for (let i = 0; i < 10; i++) {
-      client.say(
-        helpers.removeHash(channel),
-        helpers.removeHash(username) +
-          " is hosting us for " +
-          viewers +
-          " people!\nGayPride GayPride GayPride GayPride GRAB THE LUBE BOYS GayPride GayPride GayPride GayPride "
-      );
-    }
   } else {
     console.log(
       helpers.removeHash(username) +

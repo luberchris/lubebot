@@ -13,7 +13,7 @@ const rollDice = function(roll) {
   let modifier = roll.split("d")[1].split(/[+-]/)[1] || 0;
   let total = 0;
   for (let i = 0; i < number; i++) {
-    total += getRandomInt(die);
+    total += getRandomInt(die); 
   }
   console.log(total);
   return total + modifier;
