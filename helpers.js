@@ -13,8 +13,8 @@ const _ = require("lodash"),
   assert = require("assert"),
   mongoose = require("mongoose"),
   db = require("./models"),
-  queries = require("./controllers/queryController"),
-  monsters = require("./assets/lists/monsters");
+  queries = require("./controllers/queryController");
+  // monsters = require("./assets/lists/monsters");
 
 //Connect to database
 mongoose.connect(process.env.DB_ROUTE, { useNewUrlParser: true });

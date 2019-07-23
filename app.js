@@ -21,12 +21,12 @@ app.use(express.static(path.join(__dirname, "public")));
 
 //////////////////Global Variables////////////////////
 const client = controller.client;
-const greetings = require("./assets/lists/greetings"); //long list of different greetings
-const classes = require("./assets/lists/classes"); //list of classes and bonuses
-let classNames = [];
-for (let i = 0; i < classes.length; i++) {
-  classNames.push(classes[i].name);
-}
+//const greetings = require("./assets/lists/greetings"); //long list of different greetings
+//const classes = require("./assets/lists/classes"); //list of classes and bonuses
+// let classNames = [];
+// for (let i = 0; i < classes.length; i++) {
+//   classNames.push(classes[i].name);
+// }
 
 //////////////////More Helpers////////////////////
 // const findClass = className => {
@@ -67,20 +67,20 @@ for (let i = 0; i < classes.length; i++) {
 //Anongiftpaidupgrade
 
 //Ban
-client.on("ban", (channel, username, reason) => {
-  client.say(
-    helpers.removeHash(channel),
-    helpers.removeHash(username) +
-      " was banned from " +
-      helpers.removeHash(channel) +
-      "'s chat for " +
-      reason
-  );
-  client.whisper(
-    user.username,
-    "You were banned from " + helpers.removeHash(channel) + " for " + reason
-  );
-});
+// client.on("ban", (channel, username, reason) => {
+//   client.say(
+//     helpers.removeHash(channel),
+//     helpers.removeHash(username) +
+//       " was banned from " +
+//       helpers.removeHash(channel) +
+//       "'s chat for " +
+//       reason
+//   );
+//   client.whisper(
+//     user.username,
+//     "You were banned from " + helpers.removeHash(channel) + " for " + reason
+//   );
+// });
 
 //Chat
 
@@ -91,12 +91,12 @@ client.on("cheer", (channel, userstate, message) => {
 });
 
 //Clearchat
-client.on("clearchat", channel => {
-  client.say(
-    helpers.removeHash(channel),
-    helpers.removeHash(channel) + "'s chat was cleared!"
-  );
-});
+// client.on("clearchat", channel => {
+//   client.say(
+//     helpers.removeHash(channel),
+//     helpers.removeHash(channel) + "'s chat was cleared!"
+//   );
+// });
 
 //Emoteonly
 //Emotesets
@@ -155,9 +155,9 @@ client.on("message", (channel, userstate, message, self) => {
       break;
     case "chat":
       // This is a chat message..
-      queries.postUser(userstate);
-      queries.putUser("chats", userstate.username);
-      queries.putCount("chats");
+      // queries.postUser(userstate);
+      // queries.putUser("chats", userstate.username);
+      // queries.putCount("chats");
       switch (message.split(" ").length) {
         case 1:
           switch (message) {
@@ -165,68 +165,64 @@ client.on("message", (channel, userstate, message, self) => {
               console.log(userstate);
               break;
 
-            case "!attack":
-              break;
+            // case "?chats":
+            //   queries.getCount("chats", client, helpers.removeHash(channel));
+            //   break;
 
-            case "?chats":
-              queries.getCount("chats", client, helpers.removeHash(channel));
-              break;
+            // case "?classes":
+            //   let classString = "";
+            //   for (let i = 0; i < classNames.length; i++) {
+            //     if (i !== classNames.length - 1) {
+            //       classString += classNames[i] + ", ";
+            //     } else {
+            //       classString += classNames[i];
+            //     }
+            //   }
+            //   client.say(helpers.removeHash(channel), classString);
+            //   break;
 
-            case "?classes":
-              let classString = "";
-              for (let i = 0; i < classNames.length; i++) {
-                if (i !== classNames.length - 1) {
-                  classString += classNames[i] + ", ";
-                } else {
-                  classString += classNames[i];
-                }
-              }
-              client.say(helpers.removeHash(channel), classString);
-              break;
+            // case "?deaths":
+            //   queries.getCount("deaths", client, helpers.removeHash(channel));
+            //   break;
 
-            case "?deaths":
-              queries.getCount("deaths", client, helpers.removeHash(channel));
-              break;
-
-            case "!disengage":
-              break;
+            // case "!disengage":
+            //   break;
 
             case "!drink":
               client.say(
                 helpers.removeHash(channel),
-                helpers.removeHash(channel) + " you better DRINK"
+                helpers.removeHash(channel) + ", drink"
               );
               break;
 
-            case "!fight":
-              let cr = 0;
-              helpers.findMonster(
-                cr,
-                userstate.username,
-                helpers.removeHash(channel)
-              );
-              break;
+            // case "!fight":
+            //   let cr = 0;
+            //   helpers.findMonster(
+            //     cr,
+            //     userstate.username,
+            //     helpers.removeHash(channel)
+            //   );
+            //   break;
 
             //revise
             case "!gaytest":
               client.say(
                 helpers.removeHash(channel),
-                "GayPride " +
-                  userstate["display-name"] +
+                userstate["display-name"] +
                   " is " +
                   helpers.getRandomInt(100) +
                   "% likely to be gay today GayPride"
               );
               break;
 
-            case "!lube":
-              queries.putCount("lubes");
-              queries.putUser("lubes", userstate.username);
-              break;
+            // case "!lube":
+            //   // queries.putCount("lubes");
+            //   queries.putUser("lubes", userstate.username);
+            //   break;
 
-            case "?lubes":
-              queries.getCount("lubes", client, helpers.removeHash(channel));
-              break;
+            // case "?lubes":
+            //   queries.getCount("lubes", client, helpers.removeHash(channel));
+            //   break;
 
             case "!lurk":
               client.say(
@@ -236,13 +232,13 @@ client.on("message", (channel, userstate, message, self) => {
               );
               break;
 
-            case "?me":
-              queries.userStats(
-                client,
-                helpers.removeHash(channel),
-                userstate["display-name"]
-              );
-              break;
+            // case "?me":
+            //   queries.userStats(
+            //     client,
+            //     helpers.removeHash(channel),
+            //     userstate["display-name"]
+            //   );
+            //   break;
 
             case "?mods":
               client.mods(helpers.removeHash(channel)).then(mods => {
@@ -253,16 +249,16 @@ client.on("message", (channel, userstate, message, self) => {
               });
               break;
 
-            case "!shot":
-              helpers.getVotes(helpers.removeHash(channel)).then(done => {
-                client.say(
-                  helpers.removeHash(channel),
-                  done
-                    ? "Take a shot, honey"
-                    : "You don't need to take a shot right now, honey"
-                );
-              });
-              break;
+            // case "!shot":
+            //   helpers.getVotes(helpers.removeHash(channel)).then(done => {
+            //     client.say(
+            //       helpers.removeHash(channel),
+            //       done
+            //         ? "Take a shot, honey"
+            //         : "You don't need to take a shot right now, honey"
+            //     );
+            //   });
+            //   break;
 
             case "!stairs":
               //Add soundbyte of Eddy
@@ -275,50 +271,50 @@ client.on("message", (channel, userstate, message, self) => {
             case "?twitter":
               client.say(
                 helpers.removeHash(channel),
-                "Here's Chris's Twitter: https://twitter.com/luberchris"
+                "Here's Luber's Twitter: https://twitter.com/luberchris"
               );
               break;
 
-            case "?users":
-              queries.getUserCount(client, helpers.removeHash(channel));
-              break;
+            // case "?users":
+            //   queries.getUserCount(client, helpers.removeHash(channel));
+            //   break;
 
             case "?website":
               client.say(
                 helpers.removeHash(channel),
-                "Here's Chris's website: http://chrisluber.com"
+                "Here's Luber's website: http://chrisluber.com"
               );
               break;
 
-            case "#death":
-              client.mods(helpers.removeHash(channel)).then(mods => {
-                if (
-                  helpers.isAdmin(
-                    mods,
-                    helpers.removeHash(channel),
-                    userstate.username
-                  )
-                ) {
-                  // client.say(
-                  //   helpers.removeHash(channel),
-                  //   userstate.username + " is an Admin!"
-                  // );
-                  queries.putCount("deaths");
-                } else {
-                  client.say(
-                    helpers.removeHash(channel),
-                    "Sorry " +
-                      userstate["display-name"] +
-                      ", only mods can add to the death counter"
-                  );
-                }
-              });
-              break;
+            // case "#death":
+            //   client.mods(helpers.removeHash(channel)).then(mods => {
+            //     if (
+            //       helpers.isAdmin(
+            //         mods,
+            //         helpers.removeHash(channel),
+            //         userstate.username
+            //       )
+            //     ) {
+            //       // client.say(
+            //       //   helpers.removeHash(channel),
+            //       //   userstate.username + " is an Admin!"
+            //       // );
+            //       queries.putCount("deaths");
+            //     } else {
+            //       client.say(
+            //         helpers.removeHash(channel),
+            //         "Sorry " +
+            //           userstate["display-name"] +
+            //           ", only mods can add to the death counter"
+            //       );
+            //     }
+            //   });
+            //   break;
 
-            case "#lube":
-              queries.putCount("lubes");
-              queries.putUser("lubes", userstate.username);
-              break;
+            // case "#lube":
+            //   // queries.putCount("lubes");
+            //   queries.putUser("lubes", userstate.username);
+            //   break;
 
             default:
               break;
@@ -340,14 +336,14 @@ client.on("message", (channel, userstate, message, self) => {
               }
               break;
 
-            case "!fight":
-              let cr = parseFloat(message.substr(message.indexOf(" ") + 1));
-              helpers.findMonster(
-                cr,
-                userstate.username,
-                helpers.removeHash(channel)
-              );
-              break;
+            // case "!fight":
+            //   let cr = parseFloat(message.substr(message.indexOf(" ") + 1));
+            //   helpers.findMonster(
+            //     cr,
+            //     userstate.username,
+            //     helpers.removeHash(channel)
+            //   );
+            //   break;
             case "!grid":
               helpers.gridPrint(message, channel, userstate);
               break;
@@ -359,48 +355,48 @@ client.on("message", (channel, userstate, message, self) => {
               );
               break;
 
-            case "!setClass":
-              let classAssignment = {};
-              for (let i = 0; i < classes.length; i++) {
-                if (
-                  classes[i].name === message.substr(message.indexOf(" ") + 1)
-                ) {
-                  classAssignment = classes[i];
-                }
-              }
-              if (
-                classNames.includes(
-                  message.substr(message.indexOf(" ") + 1).toLowerCase()
-                )
-              ) {
-                queries.putUser(
-                  "class",
-                  userstate.username,
-                  undefined,
-                  message.substr(message.indexOf(" ") + 1),
-                  client,
-                  helpers.removeHash(channel)
-                );
-                queries.putClass(userstate.username, classAssignment);
-              } else {
-                client.say(
-                  helpers.removeHash(channel),
-                  userstate["display-name"] +
-                    ", " +
-                    message.substr(message.indexOf(" ") + 1) +
-                    " is not a class I recognize! Try again using one of these:"
-                );
-                let classString = "";
-                for (let i = 0; i < classNames.length; i++) {
-                  if (i !== classNames.length - 1) {
-                    classString += classNames[i] + ", ";
-                  } else {
-                    classString += classNames[i];
-                  }
-                }
-                client.say(helpers.removeHash(channel), classString);
-              }
-              break;
+            // case "!setClass":
+            //   let classAssignment = {};
+            //   for (let i = 0; i < classes.length; i++) {
+            //     if (
+            //       classes[i].name === message.substr(message.indexOf(" ") + 1)
+            //     ) {
+            //       classAssignment = classes[i];
+            //     }
+            //   }
+            //   if (
+            //     classNames.includes(
+            //       message.substr(message.indexOf(" ") + 1).toLowerCase()
+            //     )
+            //   ) {
+            //     queries.putUser(
+            //       "class",
+            //       userstate.username,
+            //       undefined,
+            //       message.substr(message.indexOf(" ") + 1),
+            //       client,
+            //       helpers.removeHash(channel)
+            //     );
+            //     queries.putClass(userstate.username, classAssignment);
+            //   } else {
+            //     client.say(
+            //       helpers.removeHash(channel),
+            //       userstate["display-name"] +
+            //         ", " +
+            //         message.substr(message.indexOf(" ") + 1) +
+            //         " is not a class I recognize! Try again using one of these:"
+            //     );
+            //     let classString = "";
+            //     for (let i = 0; i < classNames.length; i++) {
+            //       if (i !== classNames.length - 1) {
+            //         classString += classNames[i] + ", ";
+            //       } else {
+            //         classString += classNames[i];
+            //       }
+            //     }
+            //     client.say(helpers.removeHash(channel), classString);
+            //   }
+            //   break;
           }
       }
       break;
@@ -424,17 +420,13 @@ client.on("message", (channel, userstate, message, self) => {
 
 //Raided
 client.on("raided", (channel, username, viewers) => {
+  // client.say(
+  //   helpers.removeHash(channel),
+  //   "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  // );
   client.say(
     helpers.removeHash(channel),
-    viewers +
-      " NotLikeThis HeyGuys Oh golly gee here they come " +
-      viewers +
-      " VoteYea VoteYea VoteYea VoteYea"
-  );
-  client.say(
-    helpers.removeHash(channel),
-    `My butt is ready GayPride GayPride GayPride GayPride GayPride GayPride GayPride GayPride\n
-    We're being raided by ` +
+    `lubesyPog lubesyPog Welcome ` +
       helpers.removeHash(username) +
       `and their ` +
       viewers +
@@ -452,23 +444,23 @@ client.on("raided", (channel, username, viewers) => {
 //Subscription
 
 //Timeout
-client.on("timeout", (channel, username, length, reason) => {
-  client.say(
-    helpers.removeHash(channel),
-    helpers.removeHash(username) +
-      " was shushed for " +
-      helpers.convertSeconds(length)
-  );
-  client.whisper(
-    helpers.removeHash(username),
-    "You were timed out from " +
-      helpers.removeHash(channel) +
-      "'s chat for " +
-      helpers.convertSeconds(length) +
-      " for " +
-      reason
-  );
-});
+// client.on("timeout", (channel, username, length, reason) => {
+//   client.say(
+//     helpers.removeHash(channel),
+//     helpers.removeHash(username) +
+//       " was shushed for " +
+//       helpers.convertSeconds(length)
+//   );
+//   client.whisper(
+//     helpers.removeHash(username),
+//     "You were timed out from " +
+//       helpers.removeHash(channel) +
+//       "'s chat for " +
+//       helpers.convertSeconds(length) +
+//       " for " +
+//       reason
+//   );
+// });
 
 //Unhost
 //Unmod
