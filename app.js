@@ -215,10 +215,14 @@ client.on("message", (channel, userstate, message, self) => {
               );
               break;
 
-            // case "!lube":
-            //   // queries.putCount("lubes");
-            //   queries.putUser("lubes", userstate.username);
-            //   break;
+            case "!lube":
+              //   // queries.putCount("lubes");
+              //   queries.putUser("lubes", userstate.username);
+              client.say(
+                helpers.removeHash(channel),
+                userstate["display-name"] + " lubed us up lubesyPog"
+              );
+              break;
 
             // case "?lubes":
             //   queries.getCount("lubes", client, helpers.removeHash(channel));
@@ -247,6 +251,13 @@ client.on("message", (channel, userstate, message, self) => {
                   "Mods: " + mods.join(", ")
                 );
               });
+              break;
+
+            case "!pog":
+              client.say(
+                helpers.removeHash(channel),
+                "lubesyPog lubesyPog lubesyPog lubesyPog lubesyPog lubesyPog lubesyPog lubesyPog lubesyPog lubesyPog"
+              );
               break;
 
             // case "!shot":
