@@ -188,11 +188,37 @@ client.on("message", (channel, userstate, message, self) => {
             // case "!disengage":
             //   break;
 
+            case "!bc":
+            case "!bigclap":
+              client.say(helpers.removeHash(channel), "FeelsAmazingMan Clap");
+              break;
+
+            case "!dc":
+            case "!dogclap":
+              client.say(helpers.removeHash(channel), "Wowee Clap");
+              break;
+
+            case "!dance":
+            case "!sp":
+            case "!sourpls":
+              client.say(
+                helpers.removeHash(channel),
+                "SourPls SourPls SourPls SourPls SourPls SourPls SourPls SourPls SourPls "
+              );
+              break;
+
             case "!drink":
               client.say(
                 helpers.removeHash(channel),
                 helpers.removeHash(channel) + ", drink"
               );
+              break;
+
+            case "!feelsbadclap":
+            case "!fbc":
+            case "!nicetry":
+            case "!nt":
+              client.say(helpers.removeHash(channel), "FeelsBadMan Clap");
               break;
 
             // case "!fight":
@@ -253,11 +279,38 @@ client.on("message", (channel, userstate, message, self) => {
               });
               break;
 
+            case "!peepeega":
+            case "!Peepeega":
+              client.say(
+                helpers.removeHash(channel),
+                "P Pepega E Pepega E Pepega P Pepega E Pepega E Pepega G Pepega A"
+              );
+              break;
+
             case "!pog":
               client.say(
                 helpers.removeHash(channel),
                 "lubesyPog lubesyPog lubesyPog lubesyPog lubesyPog lubesyPog lubesyPog lubesyPog lubesyPog lubesyPog"
               );
+              break;
+
+            case "!rr":
+            case "!roulette":
+              let yourNumber = helpers.getRandomInt(6);
+              let revolver = helpers.getRandomInt(6);
+              if (yourNumber === revolver) {
+                client.say(
+                  helpers.removeHash(channel),
+                  "BANG! " +
+                    userstate["display-name"] +
+                    " had 83.33% of winning and still lost."
+                );
+              } else {
+                client.say(
+                  helpers.removeHash(channel),
+                  userstate["display-name"] + " breathes a sigh of relief."
+                );
+              }
               break;
 
             // case "!shot":
