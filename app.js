@@ -230,6 +230,13 @@ client.on("message", (channel, userstate, message, self) => {
             //   );
             //   break;
 
+            case "!hype":
+              client.say(
+                helpers.removeHash(channel),
+                "lubesyPog lubesyPog COGGERS lubesyPog Wow Wow lubesyPog Wow lubesyPog COGGERS Wow Wow COGGERS lubesyPog"
+              );
+              break;
+
             //revise
             case "!gaytest":
               client.say(
