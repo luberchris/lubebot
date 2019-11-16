@@ -85,10 +85,10 @@ const client = controller.client;
 //Chat
 
 //Cheer
-client.on("cheer", (channel, userstate, message) => {
-  client.say(helpers.removeHash(channel), userstate.username + ": " + message);
-  client.say(helpers.removeHash(channel), "Thank you for the bits!!");
-});
+// client.on("cheer", (channel, userstate, message) => {
+//   client.say(helpers.removeHash(channel), userstate.username + ": " + message);
+//   client.say(helpers.removeHash(channel), "Thank you for the bits!!");
+// });
 
 //Clearchat
 // client.on("clearchat", channel => {
@@ -188,18 +188,15 @@ client.on("message", (channel, userstate, message, self) => {
             // case "!disengage":
             //   break;
 
-            case "!bc":
             case "!bigclap":
               client.say(helpers.removeHash(channel), "FeelsAmazingMan Clap");
               break;
 
-            case "!dc":
             case "!dogclap":
               client.say(helpers.removeHash(channel), "Wowee Clap");
               break;
 
             case "!dance":
-            case "!sp":
             case "!sourpls":
               client.say(
                 helpers.removeHash(channel),
@@ -215,9 +212,6 @@ client.on("message", (channel, userstate, message, self) => {
               break;
 
             case "!feelsbadclap":
-            case "!fbc":
-            case "!nicetry":
-            case "!nt":
               client.say(helpers.removeHash(channel), "FeelsBadMan Clap");
               break;
 
@@ -239,13 +233,17 @@ client.on("message", (channel, userstate, message, self) => {
 
             //revise
             case "!gaytest":
-              client.say(
-                helpers.removeHash(channel),
-                userstate["display-name"] +
-                  " is " +
-                  helpers.getRandomInt(100) +
-                  "% likely to be gay today GayPride"
-              );
+              if (userstate["display-name"] === "lubesy") {
+                client.say(helpers.removeHash(channel), "100% no doubt.");
+              } else {
+                client.say(
+                  helpers.removeHash(channel),
+                  userstate["display-name"] +
+                    " is " +
+                    helpers.getRandomInt(100) +
+                    "% likely to be gay today GayPride"
+                );
+              }
               break;
 
             case "!lube":
@@ -277,7 +275,7 @@ client.on("message", (channel, userstate, message, self) => {
             //   );
             //   break;
 
-            case "?mods":
+            case "!mods":
               client.mods(helpers.removeHash(channel)).then(mods => {
                 client.say(
                   helpers.removeHash(channel),
@@ -339,7 +337,7 @@ client.on("message", (channel, userstate, message, self) => {
               );
               break;
 
-            case "?twitter":
+            case "!twitter":
               client.say(
                 helpers.removeHash(channel),
                 "Here's Luber's Twitter: https://twitter.com/luberchris"
@@ -350,7 +348,7 @@ client.on("message", (channel, userstate, message, self) => {
             //   queries.getUserCount(client, helpers.removeHash(channel));
             //   break;
 
-            case "?website":
+            case "!website":
               client.say(
                 helpers.removeHash(channel),
                 "Here's Luber's website: http://chrisluber.com"
@@ -490,20 +488,20 @@ client.on("message", (channel, userstate, message, self) => {
 //R9kbeta
 
 //Raided
-client.on("raided", (channel, username, viewers) => {
-  // client.say(
-  //   helpers.removeHash(channel),
-  //   "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-  // );
-  client.say(
-    helpers.removeHash(channel),
-    `lubesyPog lubesyPog Welcome ` +
-      helpers.removeHash(username) +
-      `and their ` +
-      viewers +
-      ` raiders!`
-  );
-});
+// client.on("raided", (channel, username, viewers) => {
+//   // client.say(
+//   //   helpers.removeHash(channel),
+//   //   "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+//   // );
+//   client.say(
+//     helpers.removeHash(channel),
+//     `lubesyPog lubesyPog Welcome ` +
+//       helpers.removeHash(username) +
+//       `and their ` +
+//       viewers +
+//       ` raiders!`
+//   );
+// });
 
 //Raw_message
 //Resub
