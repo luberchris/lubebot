@@ -154,13 +154,12 @@ module.exports = {
     //5d20+10
     //[5, 20+10]
     let number = roll.split("d")[0];
-    let die = roll.split("d")[1].split(/[+-*/]+/)[0];
-    let modifier = roll.split("d")[1].split(/[+-*/]+/)[1] || 0;
+    let die = roll.split("d")[1]
     let total = 0;
     for (let i = 0; i < number; i++) {
       total += this.getRandomInt(die);
     }
-    return total + modifier;
+    return total;
   },
 
   setStat: () => {

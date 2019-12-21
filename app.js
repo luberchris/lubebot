@@ -33,6 +33,36 @@ const client = controller.client;
 //   return ;
 // };
 
+let uwu = false;
+function uwuChat(input) {
+  let youCheck = input.split(" ");
+  let uwuString = "";
+  for (let i = 0; i < youCheck.length; i++) {
+    if (youCheck[i].toLowerCase() === "you") {
+      youCheck[i] = "uwu";
+    }
+  }
+  let checkedString = youCheck.join(" ");
+  for (let i = 0; i < checkedString.length; i++) {
+    if (
+      checkedString[i].toLowerCase() === "r" ||
+      checkedString[i].toLowerCase() === "l"
+    ) {
+      uwuString += "w";
+    } else if (
+      checkedString[i + 1] &&
+      checkedString[i].toLowerCase() === "t" &&
+      checkedString[i + 1].toLowerCase() === "h"
+    ) {
+      uwuString += "f";
+      i += 1;
+    } else {
+      uwuString += checkedString[i];
+    }
+  }
+  return uwuString + " uwu";
+}
+
 //////////////////Chat Actions////////////////////
 
 //Ads
@@ -111,7 +141,7 @@ client.on("hosted", (channel, username, viewers, autohost) => {
       helpers.removeHash(username) +
         " is hosting us for " +
         viewers +
-        " people! lubesyPog GRAB THE LUBE BOYS"
+        " people! lubesyPog"
     );
   } else {
     console.log(
@@ -160,7 +190,7 @@ client.on("message", (channel, userstate, message, self) => {
       // queries.putCount("chats");
       switch (message.split(" ").length) {
         case 1:
-          switch (message) {
+          switch (message.toLowerCase()) {
             case "!test":
               console.log(userstate);
               break;
@@ -188,19 +218,11 @@ client.on("message", (channel, userstate, message, self) => {
             // case "!disengage":
             //   break;
 
-            case "!bigclap":
-              client.say(helpers.removeHash(channel), "FeelsAmazingMan Clap");
-              break;
-
-            case "!dogclap":
-              client.say(helpers.removeHash(channel), "Wowee Clap");
-              break;
-
             case "!dance":
-            case "!sourpls":
+            case "!bongo":
               client.say(
                 helpers.removeHash(channel),
-                "SourPls SourPls SourPls SourPls SourPls SourPls SourPls SourPls SourPls "
+                "FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan  "
               );
               break;
 
@@ -209,10 +231,6 @@ client.on("message", (channel, userstate, message, self) => {
                 helpers.removeHash(channel),
                 helpers.removeHash(channel) + ", drink"
               );
-              break;
-
-            case "!feelsbadclap":
-              client.say(helpers.removeHash(channel), "FeelsBadMan Clap");
               break;
 
             // case "!fight":
@@ -233,8 +251,14 @@ client.on("message", (channel, userstate, message, self) => {
 
             //revise
             case "!gaytest":
-              if (userstate["display-name"] === "lubesy") {
+              if (userstate["display-name"] === "Lubesy") {
                 client.say(helpers.removeHash(channel), "100% no doubt.");
+              } else if (userstate.username === "blizzardshark") {
+                client.say(
+                  helpers.removeHash(channel),
+                  userstate["display-name"] +
+                    " is 69% likely to be gay today GayPride"
+                );
               } else {
                 client.say(
                   helpers.removeHash(channel),
@@ -285,7 +309,6 @@ client.on("message", (channel, userstate, message, self) => {
               break;
 
             case "!peepeega":
-            case "!Peepeega":
               client.say(
                 helpers.removeHash(channel),
                 "P Pepega E Pepega E Pepega P Pepega E Pepega E Pepega G Pepega A"
@@ -330,7 +353,6 @@ client.on("message", (channel, userstate, message, self) => {
             //   break;
 
             case "!stairs":
-              //Add soundbyte of Eddy
               client.say(
                 helpers.removeHash(channel),
                 "NotLikeThis NotLikeThis NotLikeThis WHAT HAPPENED TO THE STAIRS?? NotLikeThis NotLikeThis NotLikeThis "
@@ -347,6 +369,32 @@ client.on("message", (channel, userstate, message, self) => {
             // case "?users":
             //   queries.getUserCount(client, helpers.removeHash(channel));
             //   break;
+
+            case "!uwu":
+              console.log(uwu);
+              if (userstate.mod) {
+                if (uwu) {
+                  uwu = false;
+                  client.say(
+                    helpers.removeHash(channel),
+                    "/me uwu chat deactivated"
+                  );
+                } else {
+                  uwu = true;
+                  client.say(
+                    helpers.removeHash(channel),
+                    "/me uwu chat activated"
+                  );
+                }
+              } else {
+                client.say(
+                  helpers.removeHash(channel),
+                  "Only mods can activate and deactivate uwu chat"
+                );
+              }
+              break;
+            //if user is a mod
+            // translate all of chat to uwu
 
             case "!website":
               client.say(
@@ -393,17 +441,17 @@ client.on("message", (channel, userstate, message, self) => {
           switch (message.substr(0, message.indexOf(" "))) {
             //Chat commands
 
-            case "!test":
-              for (let i = 0; i < classes.length; i++) {
-                if (
-                  classes[i].name === message.substr(message.indexOf(" ") + 1)
-                ) {
-                  console.log(classes[i]);
-                } else {
-                  console.log("Not found!");
-                }
-              }
-              break;
+            // case "!test":
+            //   for (let i = 0; i < classes.length; i++) {
+            //     if (
+            //       classes[i].name === message.substr(message.indexOf(" ") + 1)
+            //     ) {
+            //       console.log(classes[i]);
+            //     } else {
+            //       console.log("Not found!");
+            //     }
+            //   }
+            //   break;
 
             // case "!fight":
             //   let cr = parseFloat(message.substr(message.indexOf(" ") + 1));
@@ -413,6 +461,7 @@ client.on("message", (channel, userstate, message, self) => {
             //     helpers.removeHash(channel)
             //   );
             //   break;
+            
             case "!grid":
               helpers.gridPrint(message, channel, userstate);
               break;
@@ -422,6 +471,19 @@ client.on("message", (channel, userstate, message, self) => {
                 helpers.removeHash(channel),
                 helpers.mock(message.substr(message.indexOf(" ") + 1))
               );
+              break;
+
+            case "!roll":
+              if (message) {
+                let roll = message.split(" ");
+                let number = roll[1].split("d")[0];
+                let die = roll[1].split("d")[1];
+                let total = 0;
+                for (let i = 0; i < number; i++) {
+                  total += helpers.getRandomInt(die);
+                }
+                client.say(helpers.removeHash(channel), "/me " + total);
+              }
               break;
 
             // case "!setClass":
@@ -466,6 +528,14 @@ client.on("message", (channel, userstate, message, self) => {
             //     client.say(helpers.removeHash(channel), classString);
             //   }
             //   break;
+            default:
+              if (uwu) {
+                client.say(
+                  helpers.removeHash(channel),
+                  userstate["display-name"] + ": " + uwuChat(message)
+                );
+              }
+              break;
           }
       }
       break;
