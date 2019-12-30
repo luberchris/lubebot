@@ -49,13 +49,6 @@ function uwuChat(input) {
       checkedString[i].toLowerCase() === "l"
     ) {
       uwuString += "w";
-    } else if (
-      checkedString[i + 1] &&
-      checkedString[i].toLowerCase() === "t" &&
-      checkedString[i + 1].toLowerCase() === "h"
-    ) {
-      uwuString += "f";
-      i += 1;
     } else {
       uwuString += checkedString[i];
     }
@@ -138,17 +131,11 @@ client.on("hosted", (channel, username, viewers, autohost) => {
   if (!autohost) {
     client.say(
       helpers.removeHash(channel),
-      helpers.removeHash(username) +
-        " is hosting us for " +
-        viewers +
-        " people! lubesyPog"
+      helpers.removeHash(username) + " is hosting us! lubesyPog"
     );
   } else {
     console.log(
-      helpers.removeHash(username) +
-        " is autohosting us for " +
-        viewers +
-        " people!"
+      helpers.removeHash(username) + " added us to their authost list!"
     );
   }
 });
@@ -157,7 +144,7 @@ client.on("hosted", (channel, username, viewers, autohost) => {
 client.on("hosting", (channel, target, viewers) => {
   client.say(
     helpers.removeHash(channel),
-    viewers + " of us are hosting " + helpers.removeHash(target) + "!"
+    "We're now hosting " + helpers.removeHash(target) + "!"
   );
 });
 
@@ -222,14 +209,21 @@ client.on("message", (channel, userstate, message, self) => {
             case "!bongo":
               client.say(
                 helpers.removeHash(channel),
-                "FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan  "
+                "FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan"
               );
               break;
 
-            case "!drink":
+            // case "!drink":
+            //   client.say(
+            //     helpers.removeHash(channel),
+            //     helpers.removeHash(channel) + ", drink whatever you have"
+            //   );
+            //   break;
+
+            case "f":
               client.say(
                 helpers.removeHash(channel),
-                helpers.removeHash(channel) + ", drink"
+                "/me thanks you for the F"
               );
               break;
 
@@ -245,7 +239,7 @@ client.on("message", (channel, userstate, message, self) => {
             case "!hype":
               client.say(
                 helpers.removeHash(channel),
-                "lubesyPog lubesyPog COGGERS lubesyPog Wow Wow lubesyPog Wow lubesyPog COGGERS Wow Wow COGGERS lubesyPog"
+                "lubesyPog lubeOop COGGERS lubesyPog Wow lubeOop lubesyPog Wow lubesyPog COGGERS Wow lubeOop COGGERS lubesyPog"
               );
               break;
 
@@ -253,12 +247,31 @@ client.on("message", (channel, userstate, message, self) => {
             case "!gaytest":
               if (userstate["display-name"] === "Lubesy") {
                 client.say(helpers.removeHash(channel), "100% no doubt.");
-              } else if (userstate.username === "blizzardshark") {
+              } else if (userstate.username.toLowerCase() === "blizzardshark") {
                 client.say(
                   helpers.removeHash(channel),
-                  userstate["display-name"] +
-                    " is 69% likely to be gay today GayPride"
+                  "This should say '" +
+                    userstate["display-name"] +
+                    " is 69% likely to be gay today GayPride' but let's see what it says:"
                 );
+                let blizzRoll = helpers.getRandomInt(100);
+                if (blizzRoll === 69) {
+                  client.say(
+                    helpers.removeHash(channel),
+                    userstate["display-name"] +
+                      " is " +
+                      blizzRoll +
+                      "% likely to be gay today - omg Lubesy wins"
+                  );
+                } else {
+                  client.say(
+                    helpers.removeHash(channel),
+                    userstate["display-name"] +
+                      " is " +
+                      blizzRoll +
+                      "% likely to be gay today - this is so sad"
+                  );
+                }
               } else {
                 client.say(
                   helpers.removeHash(channel),
@@ -275,7 +288,7 @@ client.on("message", (channel, userstate, message, self) => {
               //   queries.putUser("lubes", userstate.username);
               client.say(
                 helpers.removeHash(channel),
-                userstate["display-name"] + " lubed us up lubesyPog"
+                userstate["display-name"] + ", thank you for the lube"
               );
               break;
 
@@ -353,6 +366,7 @@ client.on("message", (channel, userstate, message, self) => {
             //   break;
 
             case "!stairs":
+              // Accompanied by a sound notification
               client.say(
                 helpers.removeHash(channel),
                 "NotLikeThis NotLikeThis NotLikeThis WHAT HAPPENED TO THE STAIRS?? NotLikeThis NotLikeThis NotLikeThis "
@@ -461,7 +475,7 @@ client.on("message", (channel, userstate, message, self) => {
             //     helpers.removeHash(channel)
             //   );
             //   break;
-            
+
             case "!grid":
               helpers.gridPrint(message, channel, userstate);
               break;
@@ -474,6 +488,7 @@ client.on("message", (channel, userstate, message, self) => {
               break;
 
             case "!roll":
+            case "!dice":
               if (message) {
                 let roll = message.split(" ");
                 let number = roll[1].split("d")[0];
