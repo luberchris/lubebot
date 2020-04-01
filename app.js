@@ -127,37 +127,37 @@ function uwuChat(input) {
 //Giftpaidupgrade
 
 //Hosted
-// client.on("hosted", (channel, username, viewers, autohost) => {
-//   if (!autohost) {
-//     client.say(
-//       helpers.removeHash(channel),
-//       helpers.removeHash(username) + " is hosting us! lubesyPog"
-//     );
-//   } else {
-//     console.log(
-//       helpers.removeHash(username) + " added us to their authost list!"
-//     );
-//   }
-// });
+client.on("hosted", (channel, username, viewers, autohost) => {
+  if (!autohost) {
+    client.say(
+      helpers.removeHash(channel),
+      helpers.removeHash(username) + " is hosting us! lubesyPog"
+    );
+  } else {
+    console.log(
+      helpers.removeHash(username) + " added us to their authost list!"
+    );
+  }
+});
 
 //Hosting
-// client.on("hosting", (channel, target, viewers) => {
-//   client.say(
-//     helpers.removeHash(channel),
-//     "We're now hosting " + helpers.removeHash(target) + "!"
-//   );
-// });
+client.on("hosting", (channel, target, viewers) => {
+  client.say(
+    helpers.removeHash(channel),
+    "We're now hosting " + helpers.removeHash(target) + "!"
+  );
+});
 
 //Join
-// client.on("join", (channel, username, self) => {
-//   client.say(
-//     helpers.removeHash(channel),
-//     greetings[helpers.getRandomInt(greetings.length - 1)] +
-//       ", " +
-//       username +
-//       "!"
-//   );
-// });
+client.on("join", (channel, username, self) => {
+  // client.say(
+  //   helpers.removeHash(channel),
+  //   greetings[helpers.getRandomInt(greetings.length - 1)] +
+  //     ", " +
+  //     username +
+  //     "!"
+  // );
+});
 
 //Logon
 //Message
@@ -178,8 +178,19 @@ client.on("message", (channel, userstate, message, self) => {
       switch (message.split(" ").length) {
         case 1:
           switch (message.toLowerCase()) {
-            case "!!!test":
+            case "!test":
               console.log(userstate);
+              break;
+
+            case "!bde":
+              if (userstate.username.toLowerCase() === "alex__belladonna") {
+                client.say(
+                  helpers.removeHash(channel),
+                  "The Biggest Dickest Energy"
+                );
+              } else {
+                client.say(helpers.removeHash(channel), "big pp");
+              }
               break;
 
             // case "?chats":
@@ -207,26 +218,18 @@ client.on("message", (channel, userstate, message, self) => {
 
             case "!dance":
             case "!bongo":
-              let danceNum = helpers.getRandomInt(2);
-              if (danceNum === 1) {
-                client.say(
-                  helpers.removeHash(channel),
-                  "FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan"
-                );
-              } else {
-                client.say(
-                  helpers.removeHash(channel),
-                  "pepeD pepeD pepeD pepeD pepeD pepeD pepeD pepeD pepeD"
-                );
-              }
+              client.say(
+                helpers.removeHash(channel),
+                "FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan FeelsBongoMan"
+              );
               break;
 
-            // case "!drink":
-            //   client.say(
-            //     helpers.removeHash(channel),
-            //     helpers.removeHash(channel) + ", drink whatever you have"
-            //   );
-            //   break;
+            case "!drink":
+              client.say(
+                helpers.removeHash(channel),
+                helpers.removeHash(channel) + ", drink whatever you have"
+              );
+              break;
 
             case "f":
               client.say(
@@ -245,9 +248,10 @@ client.on("message", (channel, userstate, message, self) => {
             //   break;
 
             case "!hype":
+            case "!hypee":
               client.say(
                 helpers.removeHash(channel),
-                "lubesyPog lubeOop RareChar lubesyPog Wow lubeOop pepeD lubesyPog Wow RareChar lubesyPog Wow lubeOop lubesyPog RareChar"
+                "lubesyPog lubeOop hypeE lubesyPog Wow lubeOop lubesyPog Wow lubesyPog hypeE Wow lubeOop hypeE lubesyPog hypeE"
               );
               break;
 
@@ -340,6 +344,15 @@ client.on("message", (channel, userstate, message, self) => {
               client.say(
                 helpers.removeHash(channel),
                 "lubesyPog lubesyPog lubesyPog lubesyPog lubesyPog lubesyPog lubesyPog lubesyPog lubesyPog lubesyPog"
+              );
+              break;
+
+
+            case "!pogplant":
+            case "!pp":
+              client.say(
+                helpers.removeHash(channel),
+                "POGPLANT POGPLANT POGPLANT POGPLANT POGPLANT POGPLANT POGPLANT"
               );
               break;
 
